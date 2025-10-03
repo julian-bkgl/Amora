@@ -1,6 +1,8 @@
-﻿using Amora.Pages;
-using Amora.Views;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,20 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Amora
+namespace Amora.Views
 {
-
-    public partial class MainWindow : Window
+    public partial class HomePage : Page
     {
-        public MainWindow()
+        private MainWindow _mainWindow;
+        public HomePage(MainWindow mainWindow)
         {
             InitializeComponent();
-            MainFrame.Navigate(new LoginPage(this));
+            _mainWindow = mainWindow;
         }
 
-        public void NavigateToHome() 
-        {
-            MainFrame.Navigate(new HomePage(this));
-        }
     }
 }
