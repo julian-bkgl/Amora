@@ -1,14 +1,19 @@
-﻿using System.Configuration;
+﻿using Amora.Resources;
+using System.Configuration;
 using System.Data;
 using System.Windows;
 
 namespace Amora
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
+
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            var systemTheme = ThemeManager.GetSystemTheme();
+            ThemeManager.ApplyTheme(systemTheme);
+        }
     }
 
 }
