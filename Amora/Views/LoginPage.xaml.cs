@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Amora.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,8 +38,7 @@ namespace Amora.Pages
                                 "Hinweis", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
-
+            _mainWindow.NavigateToHome();
         }
-
     }
 }

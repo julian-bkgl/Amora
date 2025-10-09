@@ -9,8 +9,30 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Resources\" />
+    <Compile Remove="Data\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <None Remove="Data\**" />
+    <Page Remove="Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\heart_logo.ico" />
+    <None Remove="Assets\heart_logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Resources\DarkTheme.xaml" />
+    <Page Remove="Resources\LightTheme.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\heart_logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\heart_logo.png" />
+    <Resource Include="Resources\DarkTheme.xaml" />
+    <Resource Include="Resources\LightTheme.xaml" />
   </ItemGroup>
 
 </Project>
