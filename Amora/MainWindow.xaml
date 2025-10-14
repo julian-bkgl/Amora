@@ -10,26 +10,17 @@
         Width="791"
         UseLayoutRounding="True">
 
-    <Window.Resources>
-        <DropShadowEffect x:Key="WindowDropShadow"
-                          BlurRadius="20"
-                          ShadowDepth="0"
-                          Opacity="0.35"
-                          Color="Black"/>
-    </Window.Resources>
-
-    
-    <Border CornerRadius="20"
+    <Border CornerRadius="16"
             Background="{DynamicResource WindowBackgroundBrush}"
             BorderBrush="{DynamicResource SecondaryBrush}"  
-            BorderThickness="2"
-            Effect="{StaticResource WindowDropShadow}"
+            BorderThickness="1"
+            ClipToBounds="True"
             SnapsToDevicePixels="True">
 
         <!-- kleiner Innenabstand simuliert visuellen Abstand zum Rand -->
-        <Grid Margin="3" UseLayoutRounding="True">
+        <Grid Margin="2" UseLayoutRounding="True">
 
-            <Border CornerRadius="16"
+            <Border CornerRadius="18"
                     Background="{DynamicResource BackgroundBrush}"
                     SnapsToDevicePixels="True"
                     ClipToBounds="True">
@@ -40,9 +31,10 @@
                             Height="40"
                             VerticalAlignment="Top"
                             CornerRadius="14,14,0,0"
+                            ClipToBounds="True"
                             MouseDown="TitleBar_MouseDown" Margin="5,0,5,0">
 
-                        <Grid>
+                        <Grid Cursor="">
                             <Image Source="/Assets/heart_logo.png"
                                    Width="31"
                                    Height="40"
@@ -59,47 +51,103 @@
                                        HorizontalAlignment="Left"/>
 
                             <!-- Buttons -->
-                            <Button Content="—"
+                            <!--<Button Content="—"
                                     Click="Minimize_Click"
-                                    Width="40"
-                                    Height="40"
+                                    Width="35"
+                                    Height="35"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
                                     Margin="0,0,80,0"
                                     Background="Transparent"
                                     Foreground="{DynamicResource ForegroundBrush}"
                                     BorderThickness="0"
-                                    FontSize="14"
+                                    FontSize="12"
                                     FontWeight="Bold"
                                     Cursor="Hand"/>
 
                             <Button x:Name="ThemeSwitchButton"
                                     Content="🌙"
                                     Click="ToggleTheme_Click"
-                                    Width="40"
-                                    Height="40"
+                                    Width="35"
+                                    Height="35"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
                                     Margin="0,0,40,0"
                                     Background="Transparent"
                                     Foreground="{DynamicResource ForegroundBrush}"
                                     BorderThickness="0"
-                                    FontSize="16"
+                                    FontSize="14"
                                     FontWeight="Bold"
                                     Cursor="Hand"/>
 
+
                             <Button Content="✕"
-                                    Click="Close_Click"
-                                    Width="40"
-                                    Height="40"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Top"
+                                Click="Close_Click"
+                                Width="35"
+                                Height="35"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Margin="0,0,10,0"
+                                Background="Transparent"
+                                Foreground="{DynamicResource ForegroundBrush}"
+                                BorderThickness="0"
+                                FontSize="12"
+                                FontWeight="Bold"
+                                Cursor="Hand"/>-->
+
+                            <Grid HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Margin="0,0,10,0"
+                                Height="35"
+                                Width="115"
+                                ClipToBounds="True">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0"
+                                    Content="—"
+                                    Click="Minimize_Click"
+                                    Width="35"
+                                    Height="35"
+                                    Background="Transparent"
+                                    Foreground="{DynamicResource ForegroundBrush}"
+                                    BorderThickness="0"
+                                    FontSize="12"
+                                    FontWeight="Bold"
+                                    Cursor="Hand"
+                                    Margin="0,0,5,0"/>
+
+                                <Button Grid.Column="1"
+                                    x:Name="ThemeSwitchButton"
+                                    Content="🌙"
+                                    Click="ToggleTheme_Click"
+                                    Width="35"
+                                    Height="35"
                                     Background="Transparent"
                                     Foreground="{DynamicResource ForegroundBrush}"
                                     BorderThickness="0"
                                     FontSize="14"
                                     FontWeight="Bold"
+                                    Cursor="Hand"
+                                    Margin="0,0,5,0"/>
+
+                                <Button Grid.Column="2"
+                                    Content="✕"
+                                    Click="Close_Click"
+                                    Width="35"
+                                    Height="35"
+                                    Background="Transparent"
+                                    Foreground="{DynamicResource ForegroundBrush}"
+                                    BorderThickness="0"
+                                    FontSize="12"
+                                    FontWeight="Bold"
                                     Cursor="Hand"/>
+                            </Grid>
+
+
                         </Grid>
                     </Border>
 
