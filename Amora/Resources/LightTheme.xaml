@@ -22,4 +22,7 @@
 
     <!-- Neu: Fensterhintergrund-Brush -->
     <SolidColorBrush x:Key="WindowBackgroundBrush" Color="{StaticResource WindowBackgroundColor}" />
+
+
+
 </ResourceDictionary>

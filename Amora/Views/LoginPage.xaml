@@ -22,6 +22,10 @@
             <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="AutomationProperties.HelpText" Value="Benutzername"/>
+            <!--Helptext funktioniert aus irgendeinem grund nicht-->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
@@ -49,6 +53,9 @@
         <Style x:Key="RoundedPasswordBox" TargetType="PasswordBox">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+            <Setter Property="AutomationProperties.HelpText" Value="Passwort"/>
+            <!--Helptext funktioniert aus irgendeinem grund nicht--> 
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="PasswordBox">
@@ -107,7 +114,7 @@
         <Border Width="300" Padding="20" Background="{DynamicResource BackgroundBrush}" CornerRadius="15" 
                 HorizontalAlignment="Center" VerticalAlignment="Center" 
                 Effect="{DynamicResource DropShadow}">
-            <StackPanel>
+            <StackPanel AutomationProperties.HelpText="Benutzername">
                 <TextBlock Text="Anmeldung" FontSize="24" FontWeight="Bold" 
                            HorizontalAlignment="Center" Margin="0,0,0,20"
                            Foreground="{DynamicResource ForegroundBrush}"/>
@@ -123,9 +130,10 @@
 
                 <PasswordBox x:Name="PasswordBox"
                              Style="{StaticResource RoundedPasswordBox}"
-                             Margin="0,0,0,20" Height="35"/>
+                             Margin="0,0,0,20" Height="35" AutomationProperties.HelpText="Passwort"
+                             KeyDown="Input_KeyDown"/>
 
-                <Button Content="Einloggen"
+                <Button Content="Einloggen/Registrieren"
                         Style="{StaticResource RoundedButton}"
                         Click="LoginButton_Click"/>
             </StackPanel>

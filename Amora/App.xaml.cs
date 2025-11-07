@@ -13,6 +13,7 @@ namespace Amora
             base.OnStartup(e);
             var systemTheme = ThemeManager.GetSystemTheme();
             ThemeManager.ApplyTheme(systemTheme);
+            Console.WriteLine("App wird gestartet!");
         }
     }
 
