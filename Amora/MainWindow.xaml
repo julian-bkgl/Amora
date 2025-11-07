@@ -10,12 +10,13 @@
         Width="791"
         UseLayoutRounding="True">
 
-    <Border CornerRadius="16"
+    <Border CornerRadius="21"
             Background="{DynamicResource WindowBackgroundBrush}"
-            BorderBrush="{DynamicResource SecondaryBrush}"  
+
             BorderThickness="1"
             ClipToBounds="True"
             SnapsToDevicePixels="True">
+        <!--BorderBrush="{DynamicResource SecondaryBrush}"-->
 
         <!-- kleiner Innenabstand simuliert visuellen Abstand zum Rand -->
         <Grid Margin="2" UseLayoutRounding="True">
@@ -50,50 +51,6 @@
                                        FontSize="16"
                                        HorizontalAlignment="Left"/>
 
-                            <!-- Buttons -->
-                            <!--<Button Content="—"
-                                    Click="Minimize_Click"
-                                    Width="35"
-                                    Height="35"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Top"
-                                    Margin="0,0,80,0"
-                                    Background="Transparent"
-                                    Foreground="{DynamicResource ForegroundBrush}"
-                                    BorderThickness="0"
-                                    FontSize="12"
-                                    FontWeight="Bold"
-                                    Cursor="Hand"/>
-
-                            <Button x:Name="ThemeSwitchButton"
-                                    Content="🌙"
-                                    Click="ToggleTheme_Click"
-                                    Width="35"
-                                    Height="35"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Top"
-                                    Margin="0,0,40,0"
-                                    Background="Transparent"
-                                    Foreground="{DynamicResource ForegroundBrush}"
-                                    BorderThickness="0"
-                                    FontSize="14"
-                                    FontWeight="Bold"
-                                    Cursor="Hand"/>
-
-
-                            <Button Content="✕"
-                                Click="Close_Click"
-                                Width="35"
-                                Height="35"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Top"
-                                Margin="0,0,10,0"
-                                Background="Transparent"
-                                Foreground="{DynamicResource ForegroundBrush}"
-                                BorderThickness="0"
-                                FontSize="12"
-                                FontWeight="Bold"
-                                Cursor="Hand"/>-->
 
                             <Grid HorizontalAlignment="Right"
                                 VerticalAlignment="Top"
@@ -160,4 +117,5 @@
             </Border>
         </Grid>
     </Border>
+
 </Window>

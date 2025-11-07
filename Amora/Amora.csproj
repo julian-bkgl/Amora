@@ -26,6 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="9.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Assets\heart_logo.ico" />
   </ItemGroup>
 

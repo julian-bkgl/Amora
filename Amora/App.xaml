@@ -7,6 +7,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/LightTheme.xaml"/>
+                <!--Als erstes wird hier Standardmäßig das LightTheme geladen, und später vom ThemeManager
+                    überschrieben.. -->
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
