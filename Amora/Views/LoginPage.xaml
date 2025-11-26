@@ -4,117 +4,22 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Amora.Pages"
+      xmlns:res="clr-namespace:Amora.Resources"
+      
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LoginPage"
       Background="{DynamicResource BackgroundBrush}">
 
-    <Page.Resources>
-        <!-- Schatteneffekt -->
-        <DropShadowEffect x:Key="DropShadow"
-                          Color="#80000000"
-                          BlurRadius="20"
-                          ShadowDepth="0"
-                          Opacity="0.6" />
-
-        <!-- Abgerundete TextBox -->
-        <Style x:Key="RoundedTextBox" TargetType="TextBox">
-            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="TextAlignment" Value="Center"/>
-            <Setter Property="AutomationProperties.HelpText" Value="Benutzername"/>
-            <!--Helptext funktioniert aus irgendeinem grund nicht-->
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Border x:Name="Bd"
-                                Background="{DynamicResource InputBackgroundBrush}"
-                                BorderBrush="{DynamicResource BorderBrush}"
-                                BorderThickness="1"
-                                CornerRadius="8">
-                            <ScrollViewer x:Name="PART_ContentHost" Margin="10,7"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsKeyboardFocused" Value="True">
-                                <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="Bd" Property="Opacity" Value="0.6"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <!-- Abgerundete PasswordBox -->
-        <Style x:Key="RoundedPasswordBox" TargetType="PasswordBox">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
-            <Setter Property="AutomationProperties.HelpText" Value="Passwort"/>
-            <!--Helptext funktioniert aus irgendeinem grund nicht--> 
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="PasswordBox">
-                        <Border x:Name="Bd"
-                                Background="{DynamicResource InputBackgroundBrush}"
-                                BorderBrush="{DynamicResource BorderBrush}"
-                                BorderThickness="1"
-                                CornerRadius="8"
-                                Padding="10,7">
-                            <ScrollViewer x:Name="PART_ContentHost"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsKeyboardFocused" Value="True">
-                                <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="Bd" Property="Opacity" Value="0.6"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <!-- Abgerundeter Button -->
-        <Style x:Key="RoundedButton" TargetType="Button">
-            <Setter Property="Background" Value="{DynamicResource SecondaryBrush}"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Height" Value="35"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="Bd"
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="8">
-                            <ContentPresenter Margin="10,0"
-                                              HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="Bd" Property="Opacity" Value="0.9"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="Bd" Property="Opacity" Value="0.6"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+    <Page.Resources> <!-- Lokales Laden der Styles.xaml ( ist damit Statische Resource ) --> 
+        <ResourceDictionary Source="/Resources/Styles.xaml"/>
     </Page.Resources>
     
     <Grid>
         <Border Width="300" Padding="20" Background="{DynamicResource BackgroundBrush}" CornerRadius="15" 
                 HorizontalAlignment="Center" VerticalAlignment="Center" 
                 Effect="{DynamicResource DropShadow}">
-            <StackPanel AutomationProperties.HelpText="Benutzername">
+            <StackPanel>
                 <TextBlock Text="Anmeldung" FontSize="24" FontWeight="Bold" 
                            HorizontalAlignment="Center" Margin="0,0,0,20"
                            Foreground="{DynamicResource ForegroundBrush}"/>
@@ -125,12 +30,13 @@
                 
                 <TextBox x:Name="UsernameTextBox"
                          Style="{StaticResource RoundedTextBox}"
-                         AutomationProperties.HelpText="Benutzername"
-                         Margin="0,0,0,10" Height="35"/>
+                         res:PlaceHolderService.Placeholder="Benutzername/E-Mail"
+                         Margin="0,0,0,20" Height="35"/>
 
                 <PasswordBox x:Name="PasswordBox"
                              Style="{StaticResource RoundedPasswordBox}"
-                             Margin="0,0,0,20" Height="35" AutomationProperties.HelpText="Passwort"
+                             res:PlaceHolderService.Placeholder="Passwort"
+                             Margin="0,0,0,20" Height="35"
                              KeyDown="Input_KeyDown"/>
 
                 <Button Content="Einloggen/Registrieren"

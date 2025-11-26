@@ -1,4 +1,5 @@
 ﻿using Amora.Resources;
+using Amora.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Amora.Pages
     public partial class LoginPage : Page
     {
         private readonly DBManager dbManager = new DBManager(); 
-        private MainWindow _mainWindow; 
+        private MainWindow _mainWindow;
 
         public LoginPage(MainWindow mainWindow)
         {
@@ -39,33 +40,43 @@ namespace Amora.Pages
             }
         }
 
-        private void ValidateAndLogin() // Funktion überprüft ob der Username und das Passwort eingetragen wurden
+
+        private void ValidateAndLogin()
         {
-            var username = UsernameTextBox.Text?.Trim();
+            var input = UsernameTextBox.Text?.Trim(); // Kann Username oder Email sein
             var password = PasswordBox.Password;
-            MessageBox.Show(username, password);
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
-            { // Gucken ob auch tatsächlich was geschrieben wurde
-                MessageBox.Show("Bitte Benutzername und Passwort eingeben.",
+
+            if (string.IsNullOrWhiteSpace(input) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Bitte Benutzername/E-Mail und Passwort eingeben.",
                                 "Hinweis", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
 
-            if (dbManager.ValidateUser(username, password)) { // Abfrage : Gibt es die Userdaten in der DB | Wenn es den Usernamen und Passwort in der DB gibt dann gehts weiter
-                _mainWindow.NavigateToHome(); // Normaler Login
+            if (dbManager.ValidateUser(input, password))
+            {
+                User user = dbManager.LoginUser(input, password);
+                if (user != null)
+                {
+                    _mainWindow.NavigateToHome(user);
+                }
+                else
+                {
+                    MessageBox.Show("User ist null", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
-                if (!dbManager.ValidateUserName(username)) 
+                if (!dbManager.ValidateUserName(input)) // Prüft nur Username, nicht Email
                 {
-                    // TODO : Registrierungsseite öffnen
-                    dbManager.RegisterUser(username, password); // Registrieren der Daten wenn nicht bereits vorhanden sind !
-                    MessageBox.Show("Du hast ein Konto erstellt!", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-                }else
+                    _mainWindow.NavigateToRegister(input, password);
+                }
+                else
                 {
-                    MessageBox.Show("Dein Benutzername oder Passwort war leider Falsch.", "Fehler!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Dein Benutzername/E-Mail oder Passwort war leider falsch.", "Fehler!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
+
     }
 }

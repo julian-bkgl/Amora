@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Assets\default.png" />
     <None Remove="Assets\heart_logo.ico" />
     <None Remove="Assets\heart_logo.png" />
   </ItemGroup>
@@ -30,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\default.png" />
     <Resource Include="Assets\heart_logo.ico" />
   </ItemGroup>
 
@@ -37,6 +39,12 @@
     <Resource Include="Assets\heart_logo.png" />
     <Resource Include="Resources\DarkTheme.xaml" />
     <Resource Include="Resources\LightTheme.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Resources\Styles.xaml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Page>
   </ItemGroup>
 
 </Project>

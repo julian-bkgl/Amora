@@ -6,8 +6,8 @@
         Icon="/Assets/heart_logo.ico"
         Background="Transparent"
         Title="Amora"
-        Height="484"
-        Width="791"
+        Height="700"
+        Width="900"
         UseLayoutRounding="True">
 
     <Border CornerRadius="21"

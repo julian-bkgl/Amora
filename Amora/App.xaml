@@ -6,9 +6,19 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/LightTheme.xaml"/>
-                <!--Als erstes wird hier Standardmäßig das LightTheme geladen, und später vom ThemeManager
-                    überschrieben.. -->
+                <ResourceDictionary Source="/Resources/LightTheme.xaml"/>
+                
+                <!--
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+                wird aus irgendeinem grund nicht richtig geladen und ist damit leider auch nicht global erreichbar ( neuer ansatz : lokal laden ) 
+                -->
+                
+                <!--
+                    Als erstes wird hier Standardmäßig das LightTheme geladen, und später vom ThemeManager
+                    überschrieben.. Zudem ist die Reihenfolge zwischen Styles und des aktuellem Themes wichtig weil sonst Styles
+                    keine Inhalte vom aktuellem Theme laden kann !
+                -->
+                
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

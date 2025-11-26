@@ -59,7 +59,6 @@ namespace Amora.Resources
             {
                 // Fallback bei Fehlern
             }
-
             return AppTheme.Light;
         }
 

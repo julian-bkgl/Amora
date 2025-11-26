@@ -23,7 +23,7 @@ namespace Amora
 
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); // UI wird geladen
 
 
             // System-Theme erkennen
@@ -39,9 +39,14 @@ namespace Amora
             MainFrame.Navigate(new LoginPage(this));
         }
 
-        public void NavigateToHome() 
+        public void NavigateToHome(User user) 
         {
-            MainFrame.Navigate(new HomePage(this));
+            MainFrame.Navigate(new HomePage(this, user));
+        }
+
+        public void NavigateToRegister(String username, String password)
+        {
+            MainFrame.Navigate(new RegisterPage(this, username, password));
         }
 
 
